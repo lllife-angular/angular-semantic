@@ -1,0 +1,98 @@
+<html>
+<header>
+	<script src="http://10.0.0.160:35729/livereload.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="bower_components/semantic-ui/build/packaged/css/semantic.css">
+</header>
+<body>
+
+	<div ng-app="MyApp">
+		<div ng-controller="MyController">
+
+			<div class="ui inverted menu">
+				<a class="active item">
+					<i class="home icon"></i> Home
+				</a>
+				<a class="item">
+					<i class="mail icon"></i> Products
+				</a>
+				<a class="item">
+					<i class="user icon"></i> Friends
+				</a>
+			</div>
+
+			<div class="ui fluid form segment" style="width:400px">
+				<div class="field">
+					<label>Name</label>
+					<input placeholder="Name" type="text" ng-model="product.name">
+				</div>
+				<div class="field">
+					<label>Description</label>
+					<textarea placeholder="Description" ng-model="product.description"></textarea>
+				</div>
+				<div class="field">
+					<label>Price</label>
+					<input type="text" placeholder="Price" ng-model="product.price">
+				</div>
+
+
+				<div class="ui  mini button black" ng-click="add(product)" ng-show="!editing">
+					<i class="add icon"></i>
+					Add Product
+				</div>
+				<div class="ui  mini button black" ng-click="update(product)" ng-show="editing">
+					<i class="add icon"></i>
+					Update Product
+				</div>
+
+			</td>
+		</div> <!-- end form -->
+		
+
+
+
+		<table class="ui inverted table segment">
+			<thead>
+				<tr><th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Update/Remove</th>
+				</tr>
+			</thead>
+
+			<tbody ng-repeat="p in products">
+				<tr>
+					<td>{{p.name}}</td>
+					<td>{{p.description}}</td>
+					<td>{{p.price}}</td>
+					<td>
+						<div class="ui  mini button black" ng-click="edit(p)" ng-show="!editing">
+							<i class="remove icon"></i>
+							Edit
+						</div>
+						<div class="ui  mini button black" ng-click="remove(p)">
+							<i class="remove icon"></i>
+							Remove
+						</div>
+					</td>
+
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<th>3 People</th>
+				<th>2 Approved</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</tfoot>
+	</table> <!-- end table -->
+
+</div> <!-- end controller -->
+</div> <!-- end app -->
+
+</body>
+</html>
