@@ -10,7 +10,7 @@
 	<div ng-app="MyApp">
 		<div ng-controller="MyController">
 
-			<div class="ui inverted menu">
+			<div class="ui black inverted menu">
 				<a class="active item">
 					<i class="home icon"></i> Home
 				</a>
@@ -20,78 +20,101 @@
 				<a class="item">
 					<i class="user icon"></i> Friends
 				</a>
-			</div>
-
-			<div class="ui fluid form segment" style="width:400px">
-				<div class="field">
-					<label>Name</label>
-					<input placeholder="Name" type="text" ng-model="product.name">
-				</div>
-				<div class="field">
-					<label>Description</label>
-					<textarea placeholder="Description" ng-model="product.description"></textarea>
-				</div>
-				<div class="field">
-					<label>Price</label>
-					<input type="text" placeholder="Price" ng-model="product.price">
-				</div>
+			</div><!-- end menu -->
 
 
-				<div class="ui  mini button black" ng-click="add(product)" ng-show="!editing">
-					<i class="add icon"></i>
-					Add Product
-				</div>
-				<div class="ui  mini button black" ng-click="update(product)" ng-show="editing">
-					<i class="add icon"></i>
-					Update Product
-				</div>
-
-			</td>
-		</div> <!-- end form -->
-		
-
-
-
-		<table class="ui inverted table segment">
-			<thead>
-				<tr><th>Name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Update/Remove</th>
-				</tr>
-			</thead>
-
-			<tbody ng-repeat="p in products">
-				<tr>
-					<td>{{p.name}}</td>
-					<td>{{p.description}}</td>
-					<td>{{p.price}}</td>
-					<td>
-						<div class="ui  mini button black" ng-click="edit(p)" ng-show="!editing">
-							<i class="remove icon"></i>
-							Edit
+			<div class="ui segment">
+				<div class="ui form">
+					<div class="ui four fields" style="width:100%">
+						<div class="field">
+							<label>Name</label>
+							<input placeholder="Name" type="text" ng-model="product.name">
 						</div>
-						<div class="ui  mini button black" ng-click="remove(p)">
-							<i class="remove icon"></i>
-							Remove
+						<div class="field">
+							<label>Price</label>
+							<input type="text" placeholder="Price" ng-model="product.price">
 						</div>
-					</td>
+						<div class="field">
+							<label>Price</label>
+							<input type="text" placeholder="Price" ng-model="product.price">
+						</div>
+						<div class="field">
+							<label>Price</label>
+							<input type="text" placeholder="Price" ng-model="product.price">
+						</div>												
+					</div> <!-- end form -->
+				</div>
 
-				</td>
-			</tr>
-		</tbody>
+				<div class="ui form">
 
-		<tfoot>
-			<tr>
-				<th>3 People</th>
-				<th>2 Approved</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</tfoot>
-	</table> <!-- end table -->
+					<div class="field">
+						<label>Description</label>
+						<textarea placeholder="Description" ng-model="product.description"></textarea>
+					</div>	
 
-</div> <!-- end controller -->
+				</div>
+
+				<div class="ui form">
+					<div class="ui  mini button green" ng-click="add(product)" ng-show="!editing">
+						<i class="add icon"></i>
+						Add Product
+					</div>
+					<div class="ui  mini button green" ng-click="update(product)" ng-show="editing">
+						<i class="add icon"></i>
+						Update Product
+					</div>	
+				</div>
+
+			</div> <!-- end segment -->
+
+
+			<div class="ui segment" ng-hide="products.length == 0">
+				<div class="ui small icon input" style="width:300px">
+					<input type="text" placeholder="Search small..." ng-model="text">
+					<i class="inverted43 search icon"></i>
+				</div>
+
+				<table class="ui collapsing table segment inverted black">
+					<thead>
+						<tr><th>Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Update/Remove</th>
+						</tr>
+					</thead>
+
+					<tbody ng-repeat="p in products | filter:text">
+						<tr>
+							<td>{{p.name}}</td>
+							<td>{{p.description}}</td>
+							<td>{{p.price}}</td>
+							<td>
+								<div class="ui  mini button blue" ng-click="edit(p)" ng-show="!editing">
+									<i class="edit icon"></i>
+									Edit
+								</div>
+								<div class="ui  mini button red" ng-click="remove(p)">
+									<i class="remove icon"></i>
+									Remove
+								</div>
+							</td>
+
+						</td>
+					</tr>
+				</tbody>
+
+				<tfoot>
+					<tr>
+						<th>{{products.length}} Products</th>
+						<th>2 Approved</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table> <!-- end table -->				
+		</div>
+
+	</div> <!-- end controller -->
 </div> <!-- end app -->
 
 </body>
